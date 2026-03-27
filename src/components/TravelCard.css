@@ -1,0 +1,71 @@
+.travel-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.travel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  margin-bottom: 15px;
+}
+
+.country-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.travel-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.travel-description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #fff0f0;
+}
+
+.like-icon {
+  font-size: 1.2rem;
+}
+
+.like-count {
+  font-size: 1rem;
+  color: #e74c3c;
+  font-weight: bold;
+}
