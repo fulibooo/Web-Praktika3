@@ -48,14 +48,6 @@ body {
   gap: 20px;
 }
 
-.placeholder {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  text-align: center;
-  color: #666;
-}
-
 .travels-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));

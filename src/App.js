@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import TravelCard from './components/TravelCard';
 import Filter from './components/Filter';
+import AddForm from './components/AddForm';
 
 // туры
 const initialTravels = [
@@ -21,11 +22,21 @@ function App() {
   const [travels, setTravels] = useState(initialTravels);
   const [selectedCountry, setSelectedCountry] = useState('all');
 
-  // страны для фильтра
+  // страны для фильтра (обновляется при добавлении новых)
   const countries = ['all', ...new Set(travels.map(travel => travel.country))];
 
   // фильтр путешествий
   const filteredTravels = selectedCountry === 'all' ? travels : travels.filter(travel => travel.country === selectedCountry);
+
+  // добавление нового путешествия
+  const addTravel = (newTravel) => {
+    const travelWithId = {
+      ...newTravel,
+      id: Date.now(),
+      likes: 0
+    };
+    setTravels([...travels, travelWithId]);
+  };
 
   // обработка лайков
   const handleLike = (id) => {
@@ -46,9 +57,7 @@ function App() {
             selectedCountry={selectedCountry}
             onCountryChange={setSelectedCountry}
           />
-          <div className="placeholder">
-            <p>*Форма добавления*</p>
-          </div>
+          <AddForm onAddTravel={addTravel} />
         </div>
 
         <div className="travels-list">
