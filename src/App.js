@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import TravelCard from './components/TravelCard';
+import Filter from './components/Filter';
 
 // туры
 const initialTravels = [
@@ -11,10 +12,17 @@ const initialTravels = [
 
 function App() {
   const [travels, setTravels] = useState(initialTravels);
+  const [selectedCountry, setSelectedCountry] = useState('all');
 
-  // Функция для обработки лайков
+  // страны для фильтра
+  const countries = ['all', ...new Set(travels.map(travel => travel.country))];
+
+  // фильтр путешествий
+  const filteredTravels = selectedCountry === 'all' ? travels : travels.filter(travel => travel.country === selectedCountry);
+
+  // обработка лайков
   const handleLike = (id) => {
-    setTravels(travels.map(travel => travel.id === id ? { ...travel, likes: travel.likes + 1 }: travel));
+    setTravels(travels.map(travel => travel.id === id ? { ...travel, likes: travel.likes + 1 } : travel));
   };
 
   return (
@@ -26,19 +34,28 @@ function App() {
       
       <div className="container">
         <div className="sidebar">
+          <Filter 
+            countries={countries}
+            selectedCountry={selectedCountry}
+            onCountryChange={setSelectedCountry}
+          />
           <div className="placeholder">
-            <p>Текст текст текст текст</p>
+            <p>*Форма добавления*</p>
           </div>
         </div>
 
         <div className="travels-list">
-          {travels.map(travel => (
-            <TravelCard 
-              key={travel.id}
-              travel={travel}
-              onLike={handleLike}
-            />
-          ))}
+          {filteredTravels.length === 0 ? (
+            <p className="no-travels">Нет путешествий для выбранной страны</p>
+          ) : (
+            filteredTravels.map(travel => (
+              <TravelCard 
+                key={travel.id}
+                travel={travel}
+                onLike={handleLike}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>

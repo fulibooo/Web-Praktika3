@@ -57,9 +57,18 @@ body {
 }
 
 .travels-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.no-travels {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  padding: 50px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  padding: 20px;
-  color: white;
-  text-align: center;
+  backdrop-filter: blur(5px);
+  grid-column: 1 / -1;
 }
