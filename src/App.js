@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+//туры
+const initialTravels = [
+  { id: 1, country: 'Россия', title: 'Тур по Нижнему Новгороду', description: 'Обзор главных достопримечательностей города-миллионника с богатой историей', likes: 15 },
+  { id: 2, country: 'Япония', title: 'Весна в Токио', description: 'Цветение сакуры, неоновые ночи и многолюдная Сибуя', likes: 23 },
+  { id: 3, country: 'Уругвай', title: 'Жаркий Монтевидео', description: 'Прочувствуйте латиноамериканский темперамент в развивающемся южноамериканском мегаполисе', likes: 18 }
+];
+
 function App() {
+  const [travels, setTravels] = useState(initialTravels);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="app-header">
+        <h1>Каталог путешествий</h1>
+        <p>Найди вдохновение для своего следующего приключения</p>
       </header>
+      
+      <div className="container">
+        <div className="sidebar">
+          <div className="placeholder">
+            <p>Текст текст текст текст</p>
+          </div>
+        </div>
+
+        <div className="travels-list">
+          <p>Количество путешествий: {travels.length}</p>
+        </div>
+      </div>
     </div>
   );
 }
